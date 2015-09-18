@@ -1,0 +1,13 @@
+package com.funes.santiago.minecraft;
+
+
+
+public final class Moditems {
+
+    public static final void init() {
+
+    }
+
+}
+
+

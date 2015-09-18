@@ -1,0 +1,19 @@
+package com.funes.santiago.minecraft;
+
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+
+public final class ModItems {
+	public static Item santiagoItem;
+    public static final void init() {
+    	santiagoItem = new Item()
+    			.setUnlocalizedName("santiagoItem")
+    			.setCreativeTab(CreativeTabs.tabMisc);
+        GameRegistry.registerItem(santiagoItem, "santiagoItem");
+    }
+    }
+
+
+
+

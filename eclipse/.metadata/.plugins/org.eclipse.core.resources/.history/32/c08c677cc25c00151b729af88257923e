@@ -1,0 +1,12 @@
+
+
+
+public final class ModItems {
+
+    public static final void init() {
+
+    }
+
+}
+
+}

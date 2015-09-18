@@ -1,0 +1,53 @@
+package com.funes.santiago.minecraft;
+
+import com.sun.org.apache.xml.internal.security.encryption.Reference;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.Mod.Instance;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.relauncher.Side;
+
+@Mod(modid = SantiagoMod.MODID, name = SantiagoMod.MODNAME, version = SantiagoMod.VERSION)
+public class SantiagoMod {
+
+    public static final String MODID = "santiago";
+    public static final String MODNAME = "SantiagoMod";
+    public static final String VERSION = "0.0.1";
+        
+    @Instance
+    public static SantiagoMod instance = new SantiagoMod();
+    
+    @SidedProxy(clientSide="com.funes.santiago.minecraft.ClientProxy", serverSide="com.funes.santiago.minecraft.ServerProxy")
+    public static CommonProxy proxy;
+     
+    @EventHandler
+    public void preInit(FMLPreInitializationEvent e) {
+    	System.out.println("Called method: [preInit]");
+    	 proxy.preInit(e);
+    }
+        
+    @EventHandler
+    public void init(FMLInitializationEvent e) {
+     System.out.println("Called method: [init]");
+    	proxy.init(e);
+    	if(e.getSide() == Side.CLIENT)
+		{
+		    	RenderItem renderItem = Minecraft.getMinecraft().getRenderItem();
+		    		
+		    	renderItem.getItemModelMesher().register(ModItems.santiagoItem, 0, new ModelResourceLocation(MODID + ":" +  ModItems.santiagoItem.getName(), "inventory"));
+		}
+    }
+        
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent e) {
+    	System.out.println("Called method: [postInit]");
+    	 proxy.postInit(e);
+    }
+}
